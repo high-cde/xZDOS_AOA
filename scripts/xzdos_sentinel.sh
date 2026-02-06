@@ -49,6 +49,7 @@ run_core_cycle() {
     log "[INFO] Stato precedente: $last_status (cicli: $cycles)"
 
     local AGENTS=(
+   "xzdos_moltbook_social.sh"
         "xzdos_aoa_install.sh"
         "xzdos_aoa_update.sh"
         "xzdos_aoa_sync.sh"
