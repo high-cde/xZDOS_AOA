@@ -1,0 +1,30 @@
+[00:03:36] [INFO] Ciclo precedente: 
+[00:03:36] [INFO] Stato precedente: 
+[00:03:36] [STEP] Verifica integrità agenti
+[00:03:36] [OK] xzdos_aoa_install.sh integro
+[00:03:36] [OK] xzdos_aoa_update.sh integro
+[00:03:36] [OK] xzdos_aoa_sync.sh integro
+[00:03:36] [OK] xzdos_aoa_pages_sync.sh integro
+[00:03:36] [OK] xzdos_aoa_deploy_pages.sh integro
+[00:03:36] [OK] xzdos_template_gen.sh integro
+[00:03:36] [OK] xzdos_panel_gen.sh integro
+[00:03:36] [OK] xzdos_rebuild.sh integro
+[00:03:36] [OK] xzdos_backup.sh integro
+[00:03:36] [OK] xzdos_doctor.sh integro
+[00:03:36] [OK] xzdos_validator.sh integro
+[00:03:36] [OK] xzdos_aoa_all_in_one.sh integro
+[00:03:36] [STEP] Diagnostica avanzata
+[DOCTOR] Diagnostica xZDOS_AOA
+[CHECK] Verifica directory...
+[WARN] panels mancante
+[WARN] config mancante
+[WARN] src mancante
+[WARN] scripts mancante
+[DONE] Diagnostica completata
+[00:03:36] [OK] Diagnostica completata
+[00:03:36] [STEP] Validazione integrità
+[VALIDATOR] Validazione struttura xZDOS_AOA
+[ERROR] Master script mancante
+[DONE] Validazione completata
+[00:03:36] [OK] Validazione completata
+[00:03:36] [DONE] Ciclo SENTINEL completato — Stato: OK

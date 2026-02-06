@@ -1,0 +1,26 @@
+[23:55:39] [INFO] Root: /data/data/com.termux/files/home/xZDOS_AOA
+[23:55:39] [INFO] Scripts dir: /data/data/com.termux/files/home/xZDOS_AOA/scripts
+[23:55:39] [INFO] Log file: /data/data/com.termux/files/home/xZDOS_AOA/logs/sentinel_20260206_235539.log
+[23:55:39] [STEP] Verifica integrità agenti
+[23:55:39] [OK] xzdos_aoa_install.sh presente ed eseguibile
+[23:55:39] [OK] xzdos_aoa_update.sh presente ed eseguibile
+[23:55:39] [OK] xzdos_aoa_sync.sh presente ed eseguibile
+[23:55:39] [OK] xzdos_aoa_pages_sync.sh presente ed eseguibile
+[23:55:39] [OK] xzdos_aoa_deploy_pages.sh presente ed eseguibile
+[23:55:39] [OK] xzdos_template_gen.sh presente ed eseguibile
+[23:55:39] [OK] xzdos_panel_gen.sh presente ed eseguibile
+[23:55:39] [OK] xzdos_rebuild.sh presente ed eseguibile
+[23:55:39] [OK] xzdos_backup.sh presente ed eseguibile
+[23:55:39] [OK] xzdos_doctor.sh presente ed eseguibile
+[23:55:39] [OK] xzdos_validator.sh presente ed eseguibile
+[23:55:39] [OK] xzdos_aoa_all_in_one.sh presente ed eseguibile
+[23:55:39] [STEP] Health check ecosistema
+[DOCTOR] Diagnostica xZDOS_AOA
+[CHECK] Verifica directory...
+[OK] panels
+[OK] config
+[OK] src
+[OK] scripts
+[DONE] Diagnostica completata
+[23:55:39] [WARN] xzdos_validator.sh non trovato
+[23:55:39] [DONE] Ciclo SENTINEL completato.

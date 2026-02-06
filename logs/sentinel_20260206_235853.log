@@ -1,0 +1,27 @@
+[23:58:53] [INFO] Scripts dir: /data/data/com.termux/files/home/xZDOS_AOA/scripts
+[23:58:53] [INFO] Log file: /data/data/com.termux/files/home/xZDOS_AOA/logs/sentinel_20260206_235853.log
+[23:58:53] [STEP] Verifica integrità agenti
+[23:58:53] [OK] xzdos_aoa_install.sh presente ed eseguibile
+[23:58:53] [OK] xzdos_aoa_update.sh presente ed eseguibile
+[23:58:53] [OK] xzdos_aoa_sync.sh presente ed eseguibile
+[23:58:53] [OK] xzdos_aoa_pages_sync.sh presente ed eseguibile
+[23:58:53] [OK] xzdos_aoa_deploy_pages.sh presente ed eseguibile
+[23:58:53] [OK] xzdos_template_gen.sh presente ed eseguibile
+[23:58:53] [OK] xzdos_panel_gen.sh presente ed eseguibile
+[23:58:53] [OK] xzdos_rebuild.sh presente ed eseguibile
+[23:58:53] [OK] xzdos_backup.sh presente ed eseguibile
+[23:58:53] [OK] xzdos_doctor.sh presente ed eseguibile
+[23:58:53] [OK] xzdos_validator.sh presente ed eseguibile
+[23:58:53] [OK] xzdos_aoa_all_in_one.sh presente ed eseguibile
+[23:58:53] [STEP] Health check ecosistema
+[DOCTOR] Diagnostica xZDOS_AOA
+[CHECK] Verifica directory...
+[WARN] panels mancante
+[WARN] config mancante
+[WARN] src mancante
+[WARN] scripts mancante
+[DONE] Diagnostica completata
+[VALIDATOR] Validazione struttura xZDOS_AOA
+[ERROR] Master script mancante
+[DONE] Validazione completata
+[23:58:53] [DONE] Ciclo SENTINEL completato.
