@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>xZDOS · Control Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #0a0a0a;
+      color: #e6e6e6;
+      font-family: "Segoe UI", Arial, sans-serif;
+    }
+
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      background: linear-gradient(135deg, #111, #1a1a1a);
+      border-bottom: 1px solid #222;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+      letter-spacing: 2px;
+      color: #00eaff;
+      text-shadow: 0 0 10px #00eaff55;
+    }
+
+    p.subtitle {
+      margin-top: 10px;
+      font-size: 1.2rem;
+      opacity: 0.8;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #00eaff;
+      border-left: 4px solid #00eaff;
+      padding-left: 10px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #111;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #1f1f1f;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: #00eaff;
+      box-shadow: 0 0 15px #00eaff33;
+    }
+
+    .card h3 {
+      margin-top: 0;
+      color: #00eaff;
+    }
+
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      opacity: 0.6;
+      border-top: 1px solid #222;
+    }
+
+    a {
+      color: #00eaff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>xZDOS</h1>
+  <p class="subtitle">Ecosistema operativo · Hub centrale · Moduli intelligenti</p>
+</header>
+
+<div class="container">
+
+  <h2 class="section-title">Moduli del Sistema</h2>
+
+  <div class="grid">
+
+    <div class="card">
+      <h3>Dr. High‑berzek</h3>
+      <p>Orchestratore principale. Analisi, piani, stato operativo, supervisione dei repository.</p>
+      <p><strong>Status:</strong> attivo</p>
+    </div>
+
+    <div class="card">
+      <h3>SENTINEL</h3>
+      <p>Modulo di esecuzione piani, auto‑riparazione, monitoraggio e fallback.</p>
+      <p><strong>Status:</strong> in ascolto</p>
+    </div>
+
+    <div class="card">
+      <h3>RZAI‑pulciz</h3>
+      <p>Modulo di validazione, controllo integrità, notifiche e verifiche strutturali.</p>
+      <p><strong>Status:</strong> operativo</p>
+    </div>
+
+    <div class="card">
+      <h3>xZDOS Wallet</h3>
+      <p>Interfaccia dedicata al modulo wallet.</p>
+      <p><a href="https://wallet.x-zdos.it">Apri wallet.x-zdos.it</a></p>
+    </div>
+
+  </div>
+
+  <h2 class="section-title">Informazioni di Sistema</h2>
+
+  <div class="card">
+    <p><strong>Dominio:</strong> x-zdos.it</p>
+    <p><strong>Hosting:</strong> GitHub Pages</p>
+    <p><strong>DNS:</strong> Register.it</p>
+    <p><strong>Versione Hub:</strong> 1.0</p>
+  </div>
+
+</div>
+
+<footer>
+  © xZDOS · Sistema modulare · Generato dinamicamente
+</footer>
+
+</body>
+</html>
