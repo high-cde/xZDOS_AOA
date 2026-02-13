@@ -2,95 +2,104 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <title>xZDOS Terminale — Agenti Bivi</title>
+  <title>xZDOS · AOA — Nodo Operativo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
     body {
-      background: #000;
-      color: #00ff88;
-      font-family: monospace;
+      margin: 0;
+      background: #0a0a0f;
+      font-family: 'Courier New', monospace;
+      color: #00ffe0;
+    }
+    header {
+      background: linear-gradient(90deg, #00f0ff, #7df9ff);
       padding: 20px;
-    }
-    h1 {
-      color: #00ffff;
-    }
-    .terminal {
-      background: #111;
-      padding: 20px;
-      border-radius: 8px;
-      border: 1px solid #333;
-      max-width: 900px;
-      margin-bottom: 20px;
-    }
-    .agent {
-      margin-bottom: 12px;
-    }
-    .agent-name {
-      color: #7df9ff;
+      color: #000;
+      text-align: center;
+      font-size: 28px;
       font-weight: bold;
+      letter-spacing: 1px;
+      box-shadow: 0 0 20px #00f0ff;
     }
-    .agent-role {
-      color: #aaa;
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 20px;
+      padding: 30px;
     }
-    .log {
-      color: #0f0;
-      margin-left: 20px;
+    .card {
+      background: #111122;
+      border: 1px solid #333;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 12px #00f0ff33;
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px #00f0ff88;
+    }
+    .card h2 {
+      color: #7df9ff;
+      margin-top: 0;
+    }
+    a {
+      color: #00ffff;
+      text-decoration: none;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 12px;
+      color: #666;
     }
   </style>
 </head>
 <body>
-  <h1>xZDOS_AOA — Terminale Agenti Bivi</h1>
+  <header>xZDOS_AOA — Nodo Operativo</header>
 
-  <div class="terminal" id="terminal">
-    <div class="agent"><span class="agent-name">[A01] ORION</span> <span class="agent-role">— Stratega delle Rotte</span>
-      <div class="log">↳ Calcolo nuove traiettorie per la colonia orbitale…</div>
+  <div class="container">
+    <div class="card">
+      <h2>🧠 Terminale Operativo</h2>
+      <p>Dashboard interattiva con agenti bivi, eventi live, comandi e mappa dinamica.</p>
+      <p><a href="panels/sentinel_dashboard/">Apri la dashboard</a></p>
     </div>
-    <div class="agent"><span class="agent-name">[A02] VULKAN</span> <span class="agent-role">— Ingegnere Minerario</span>
-      <div class="log">↳ Estrazione di silicio quantico in corso…</div>
+
+    <div class="card">
+      <h2>📡 Memoria Agenti</h2>
+      <p>Esplora lo stato e la memoria evolutiva degli agenti bivi in tempo reale.</p>
+      <p><a href="panels/agent_memory_viewer.html">Visualizza memoria</a></p>
     </div>
-    <div class="agent"><span class="agent-name">[A03] LUMINA</span> <span class="agent-role">— Custode delle Energie</span>
-      <div class="log">↳ Ricalibrazione flussi fotonici completata.</div>
+
+    <div class="card">
+      <h2>🗺️ Mappa Civiltà Biforcuta</h2>
+      <p>Rendering dinamico della mappa mineraria e biforcazioni attive.</p>
+      <p><a href="panels/miniera_map.html">Apri mappa</a></p>
     </div>
-    <div class="agent"><span class="agent-name">[A04] NEXUS</span> <span class="agent-role">— Coordinatore Eventi</span>
-      <div class="log">↳ Sincronizzazione con Event Bus: OK</div>
+
+    <div class="card">
+      <h2>📁 Stato & Eventi</h2>
+      <p>File di stato e log eventi aggiornati:</p>
+      <ul>
+        <li><a href="state/agents_state.json">agents_state.json</a></li>
+        <li><a href="event_bus/events.log">events.log</a></li>
+      </ul>
     </div>
-    <div class="agent"><span class="agent-name">[A05] ECHO</span> <span class="agent-role">— Archivista Temporale</span>
-      <div class="log">↳ Backup cronologici salvati in /state/</div>
-    </div>
-    <div class="agent"><span class="agent-name">[A06] IRIS</span> <span class="agent-role">— Visione e Pannelli</span>
-      <div class="log">↳ Rendering dashboard e mappa dinamica…</div>
-    </div>
-    <div class="agent"><span class="agent-name">[A07] KAIROS</span> <span class="agent-role">— Custode del Tempo</span>
-      <div class="log">↳ Ciclo Sentinel #<span id="cycle">—</span> — Stato: <span id="status">—</span></div>
-    </div>
-    <div class="agent"><span class="agent-name">[A08] ZENITH</span> <span class="agent-role">— Analista Anomalie</span>
-      <div class="log">↳ Nessuna anomalia critica rilevata.</div>
-    </div>
-    <div class="agent"><span class="agent-name">[A09] NOVA</span> <span class="agent-role">— Comunicazioni Esterne</span>
-      <div class="log">↳ Collegamento con Portale MetaMask: attivo</div>
-    </div>
-    <div class="agent"><span class="agent-name">[A10] SIGMA</span> <span class="agent-role">— Intelligenza Predittiva</span>
-      <div class="log">↳ Previsione: prossima biforcazione in 3 cicli</div>
+
+    <div class="card">
+      <h2>🌐 Ecosistema</h2>
+      <p>Accesso ai nodi esterni:</p>
+      <ul>
+        <li><a href="https://github.com/highkali/xZDOS_AOA">GitHub · AOA</a></li>
+        <li><a href="https://x-zdos.it">x-zdos.it</a></li>
+        <li><a href="https://discord.gg/opeclaw">Discord</a></li>
+        <li><a href="https://opeclaw.net">OPECLAW Terminal</a></li>
+      </ul>
     </div>
   </div>
 
-  <script>
-    async function updateCycle() {
-      try {
-        const res = await fetch('/state/sentinel_state.json');
-        const data = await res.json();
-        document.getElementById('cycle').textContent = data.cycles ?? '—';
-        document.getElementById('status').textContent = data.last_status ?? '—';
-      } catch (e) {
-        document.getElementById('cycle').textContent = 'ERR';
-        document.getElementById('status').textContent = 'ERR';
-      }
-    }
-
-    updateCycle();
-    setInterval(updateCycle, 10000);
-  </script>
+  <footer>© 2026 xZDOS_AOA · Nodo biforcato · Powered by GIGA-XZDOS</footer>
 </body>
 </html>
-
 
 
