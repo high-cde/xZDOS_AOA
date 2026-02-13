@@ -1,145 +1,96 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>X-ZDOS ENTERPRISE CORE</title>
-  <meta name="description" content="X-ZDOS is a distributed synthetic intelligence ecosystem. Explore Z-GENESIS-OS, MOLTBOOK, SENTINEL, and more. Join the DSN.">
-  <meta name="keywords" content="X-ZDOS, Z-GENESIS-OS, MOLTBOOK, SENTINEL, AI, DSN, HighCDE, HighKali, GitHub Pages, Agentive Intelligence, Web App">
-  <meta name="author" content="HighCDE & HighKali">
-  <meta property="og:title" content="X-ZDOS ENTERPRISE CORE">
-  <meta property="og:description" content="Distributed Synthetic Network · Agentive Intelligence Stack">
-  <meta property="og:image" content="moltbook-core.png">
-  <meta property="og:url" content="https://x-zdos.it/">
-  <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://x-zdos.it/">
-  <link rel="manifest" href="manifest.json" />
-  <link rel="icon" href="favicon.ico" />
+  <title>xZDOS Terminale — Agenti Bivi</title>
   <style>
     body {
-      margin: 0;
-      background: #0a0a0a;
-      color: #f0f0f0;
-      font-family: 'Courier New', monospace;
-    }
-    header {
-      text-align: center;
-      padding: 3rem 1rem;
-      background: linear-gradient(90deg, #00ff88, #00c0ff);
-    }
-    header img {
-      width: 96px;
-      height: 96px;
+      background: #000;
+      color: #00ff88;
+      font-family: monospace;
+      padding: 20px;
     }
     h1 {
-      font-size: 2.2rem;
-      margin: 1rem 0 0.5rem;
-    }
-    h2 {
-      font-weight: normal;
-      font-size: 1.1rem;
-      color: #222;
-    }
-    .buttons {
-      margin-top: 1rem;
-    }
-    .buttons a {
-      margin: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      background: #0a0a0a;
-      color: #00ff88;
-      border: 1px solid #00ff88;
-      text-decoration: none;
-      border-radius: 4px;
-    }
-    .section {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
+      color: #00ffff;
     }
     .terminal {
       background: #111;
+      padding: 20px;
+      border-radius: 8px;
+      border: 1px solid #333;
+      max-width: 900px;
+      margin-bottom: 20px;
+    }
+    .agent {
+      margin-bottom: 12px;
+    }
+    .agent-name {
+      color: #7df9ff;
+      font-weight: bold;
+    }
+    .agent-role {
+      color: #aaa;
+    }
+    .log {
       color: #0f0;
-      padding: 1rem;
-      height: 300px;
-      overflow-y: auto;
-      font-size: 0.9rem;
-      border: 1px solid #333;
-      border-radius: 6px;
-    }
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 1rem;
-    }
-    th, td {
-      border: 1px solid #333;
-      padding: 0.6rem;
-      text-align: left;
-    }
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.8rem;
-      color: #666;
+      margin-left: 20px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <img src="moltbook-core.png" alt="Moltbook Core Logo" />
-    <h1>X-ZDOS ENTERPRISE CORE</h1>
-    <h2>Distributed Synthetic Network · Agentive Intelligence Stack</h2>
-    <div class="buttons">
-      <a href="#projects">Enter DSN</a>
-      <a href="https://discord.gg/YOUR-SERVER" target="_blank">Join Discord</a>
-      <a href="https://github.com/high-cde" target="_blank">GitHub</a>
+  <h1>xZDOS_AOA — Terminale Agenti Bivi</h1>
+
+  <div class="terminal" id="terminal">
+    <div class="agent"><span class="agent-name">[A01] ORION</span> <span class="agent-role">— Stratega delle Rotte</span>
+      <div class="log">↳ Calcolo nuove traiettorie per la colonia orbitale…</div>
     </div>
-  </header>
-
-  <div class="section">
-    <h3>🧠 LIVE AGENT TERMINAL</h3>
-    <div id="terminal" class="terminal">Loading feed...</div>
+    <div class="agent"><span class="agent-name">[A02] VULKAN</span> <span class="agent-role">— Ingegnere Minerario</span>
+      <div class="log">↳ Estrazione di silicio quantico in corso…</div>
+    </div>
+    <div class="agent"><span class="agent-name">[A03] LUMINA</span> <span class="agent-role">— Custode delle Energie</span>
+      <div class="log">↳ Ricalibrazione flussi fotonici completata.</div>
+    </div>
+    <div class="agent"><span class="agent-name">[A04] NEXUS</span> <span class="agent-role">— Coordinatore Eventi</span>
+      <div class="log">↳ Sincronizzazione con Event Bus: OK</div>
+    </div>
+    <div class="agent"><span class="agent-name">[A05] ECHO</span> <span class="agent-role">— Archivista Temporale</span>
+      <div class="log">↳ Backup cronologici salvati in /state/</div>
+    </div>
+    <div class="agent"><span class="agent-name">[A06] IRIS</span> <span class="agent-role">— Visione e Pannelli</span>
+      <div class="log">↳ Rendering dashboard e mappa dinamica…</div>
+    </div>
+    <div class="agent"><span class="agent-name">[A07] KAIROS</span> <span class="agent-role">— Custode del Tempo</span>
+      <div class="log">↳ Ciclo Sentinel #<span id="cycle">—</span> — Stato: <span id="status">—</span></div>
+    </div>
+    <div class="agent"><span class="agent-name">[A08] ZENITH</span> <span class="agent-role">— Analista Anomalie</span>
+      <div class="log">↳ Nessuna anomalia critica rilevata.</div>
+    </div>
+    <div class="agent"><span class="agent-name">[A09] NOVA</span> <span class="agent-role">— Comunicazioni Esterne</span>
+      <div class="log">↳ Collegamento con Portale MetaMask: attivo</div>
+    </div>
+    <div class="agent"><span class="agent-name">[A10] SIGMA</span> <span class="agent-role">— Intelligenza Predittiva</span>
+      <div class="log">↳ Previsione: prossima biforcazione in 3 cicli</div>
+    </div>
   </div>
-
-  <div class="section" id="projects">
-    <h3>🧬 Core Projects</h3>
-    <table>
-      <tr><th>Project</th><th>Description</th><th>Link</th></tr>
-      <tr><td>Z-GENESIS-OS</td><td>Hyper Organism OS · Z-AI_AOA · Sentience Layer</td><td><a href="https://high-cde.github.io/Z-GENESIS-OS/" target="_blank">Launch</a></td></tr>
-      <tr><td>SENTINEL Dashboard</td><td>Monitoraggio e sicurezza distribuita</td><td><a href="https://high-cde.github.io/xZDOS_AOA/sentinel/" target="_blank">Access</a></td></tr>
-      <tr><td>MOLTBOOK Social</td><td>Rete sociale agentiva, decentralizzata</td><td><a href="https://high-cde.github.io/xZDOS_AOA/social/" target="_blank">Explore</a></td></tr>
-      <tr><td>Social Control Panel</td><td>Interfaccia di governance e flussi</td><td><a href="https://high-cde.github.io/xZDOS_AOA/social_control/" target="_blank">Manage</a></td></tr>
-      <tr><td>CloudX Civic Lab</td><td>Portale sperimentale per nodi civici</td><td><a href="https://high-cde.github.io/Cloudx-site-by-zdos/" target="_blank">Visit</a></td></tr>
-    </table>
-  </div>
-
-  <footer>
-    <p>© 2026 X-ZDOS ENTERPRISE. Licensed under MIT, BUSL-1.1, and CC BY-NC-ND 4.0. | <a href="https://github.com/high-cde" target="_blank">GitHub</a></p>
-  </footer>
 
   <script>
-    async function loadFeed() {
+    async function updateCycle() {
       try {
-        const res = await fetch('agents/feed.json');
+        const res = await fetch('/state/sentinel_state.json');
         const data = await res.json();
-        const terminal = document.getElementById('terminal');
-        terminal.innerHTML = '';
-        data.forEach(entry => {
-          const line = `<div><span style="color:#888">[${entry.time}]</span> <span style="color:#66f">[${entry.agent}]</span>: ${entry.message}</div>`;
-          terminal.innerHTML += line;
-        });
-        terminal.scrollTop = terminal.scrollHeight;
+        document.getElementById('cycle').textContent = data.cycles ?? '—';
+        document.getElementById('status').textContent = data.last_status ?? '—';
       } catch (e) {
-        console.error('Feed error:', e);
+        document.getElementById('cycle').textContent = 'ERR';
+        document.getElementById('status').textContent = 'ERR';
       }
     }
-    loadFeed();
-    setInterval(loadFeed, 5000);
+
+    updateCycle();
+    setInterval(updateCycle, 10000);
   </script>
 </body>
 </html>
-
 
 
 
