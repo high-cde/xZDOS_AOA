@@ -2,104 +2,381 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <title>xZDOS · AOA — Nodo Operativo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>xZDOS AOA · Operative Hub</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
+    :root {
+      --bg: #050711;
+      --bg-alt: #0b0f1f;
+      --card: #111729;
+      --accent: #4af2c5;
+      --accent-soft: rgba(74, 242, 197, 0.12);
+      --accent-strong: #3ad0a7;
+      --text: #f5f7ff;
+      --muted: #9aa3c7;
+      --border: #1c2238;
+      --radius-lg: 18px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
-      margin: 0;
-      background: #0a0a0f;
-      font-family: 'Courier New', monospace;
-      color: #00ffe0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #151b3a 0, #050711 55%);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      padding: 24px;
     }
-    header {
-      background: linear-gradient(90deg, #00f0ff, #7df9ff);
-      padding: 20px;
-      color: #000;
-      text-align: center;
-      font-size: 28px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      box-shadow: 0 0 20px #00f0ff;
-    }
-    .container {
+
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: minmax(0, 2fr) minmax(0, 1.4fr);
       gap: 20px;
-      padding: 30px;
     }
-    .card {
-      background: #111122;
-      border: 1px solid #333;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 12px #00f0ff33;
-      transition: transform 0.2s ease;
+
+    .hero {
+      padding: 20px 22px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, #111729, #050711);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.7);
     }
-    .card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 0 20px #00f0ff88;
+
+    .hero-kicker {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      margin-bottom: 6px;
     }
-    .card h2 {
-      color: #7df9ff;
-      margin-top: 0;
+
+    .hero-title {
+      font-size: 26px;
+      font-weight: 650;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
     }
-    a {
-      color: #00ffff;
+
+    .hero-sub {
+      font-size: 13px;
+      color: var(--muted);
+      max-width: 520px;
+      line-height: 1.5;
+      margin-bottom: 16px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .pill {
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(154, 163, 199, 0.4);
+      padding: 6px 12px;
+      font-size: 11px;
+      color: var(--muted);
+      background: rgba(5, 7, 17, 0.7);
+      cursor: pointer;
+      transition: border 0.15s, color 0.15s, background 0.15s, transform 0.1s;
       text-decoration: none;
+      display: inline-block;
     }
-    footer {
-      text-align: center;
-      padding: 20px;
+
+    .pill:hover {
+      border-color: var(--accent);
+      color: var(--accent-strong);
+      background: rgba(17, 23, 41, 0.95);
+      transform: translateY(-1px);
+    }
+
+    .pill-accent {
+      border-color: rgba(74, 242, 197, 0.7);
+      color: var(--accent-strong);
+      background: var(--accent-soft);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .card {
+      border-radius: var(--radius-md);
+      background: rgba(11, 15, 31, 0.96);
+      border: 1px solid var(--border);
+      padding: 12px 13px;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
       font-size: 12px;
-      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .card-pill {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(74, 242, 197, 0.4);
+      color: var(--accent-strong);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+    }
+
+    .card-body {
+      font-size: 12px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .list-item {
+      display: flex;
+      gap: 8px;
+      align-items: flex-start;
+    }
+
+    .list-bullet {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      margin-top: 5px;
+    }
+
+    .list-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .side {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
   </style>
 </head>
+
 <body>
-  <header>xZDOS_AOA — Nodo Operativo</header>
+  <div class="page">
 
-  <div class="container">
-    <div class="card">
-      <h2>🧠 Terminale Operativo</h2>
-      <p>Dashboard interattiva con agenti bivi, eventi live, comandi e mappa dinamica.</p>
-      <p><a href="panels/sentinel_dashboard/">Apri la dashboard</a></p>
-    </div>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-kicker">xZDOS · AOA</div>
+      <h1 class="hero-title">Operative Automa Architecture</h1>
+      <p class="hero-sub">
+        Nodo operativo dell’ecosistema x‑ZDOS.  
+        Qui social, agenti e automi diventano un unico organismo.
+      </p>
 
-    <div class="card">
-      <h2>📡 Memoria Agenti</h2>
-      <p>Esplora lo stato e la memoria evolutiva degli agenti bivi in tempo reale.</p>
-      <p><a href="panels/agent_memory_viewer.html">Visualizza memoria</a></p>
-    </div>
+      <!-- SOCIAL HUB -->
+      <div class="card" style="margin-bottom:12px;">
+        <div class="card-header">
+          <div class="card-title">Social Hub</div>
+          <div class="card-pill">Live</div>
+        </div>
 
-    <div class="card">
-      <h2>🗺️ Mappa Civiltà Biforcuta</h2>
-      <p>Rendering dinamico della mappa mineraria e biforcazioni attive.</p>
-      <p><a href="panels/miniera_map.html">Apri mappa</a></p>
-    </div>
+        <div class="card-body">
+          <div class="pill-row">
+            <a class="pill pill-accent" href="https://github.com/high-cde/xZDOS_AOA/" target="_blank">🧬 GitHub · AOA</a>
+            <a class="pill" href="https://github.com/high-cde/xCLOUD-by-zdos" target="_blank">☁️ xCLOUD</a>
+            <a class="pill" href="https://github.com/high-cde/Z-GENESIS-OS.git" target="_blank">🧱 Z‑GENESIS‑OS</a>
+            <a class="pill" href="https://x-zdos.it" target="_blank">🌐 x‑zdos.it</a>
+            <a class="pill" href="https://discord.gg/hbw2WYk7HQ" target="_blank">💬 Discord</a>
 
-    <div class="card">
-      <h2>📁 Stato & Eventi</h2>
-      <p>File di stato e log eventi aggiornati:</p>
-      <ul>
-        <li><a href="state/agents_state.json">agents_state.json</a></li>
-        <li><a href="event_bus/events.log">events.log</a></li>
-      </ul>
-    </div>
+            <!-- COLLEGAMENTO OPECLAW -->
+            <a href="opeclaw://open" class="pill pill-accent">🦾 Apri OPECLAW</a>
+          </div>
 
-    <div class="card">
-      <h2>🌐 Ecosistema</h2>
-      <p>Accesso ai nodi esterni:</p>
-      <ul>
-        <li><a href="https://github.com/highkali/xZDOS_AOA">GitHub · AOA</a></li>
-        <li><a href="https://x-zdos.it">x-zdos.it</a></li>
-        <li><a href="https://discord.gg/opeclaw">Discord</a></li>
-        <li><a href="https://opeclaw.net">OPECLAW Terminal</a></li>
-      </ul>
-    </div>
+          <p style="font-size:11px;margin-top:4px;">
+            Tutti i nodi social e tecnici dell’ecosistema, raccolti in un unico hub operativo.
+          </p>
+        </div>
+      </div>
+
+      <!-- AGENTI & AUTOMI -->
+      <div class="grid">
+
+        <!-- AGENTI -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Agenti</div>
+            <div class="card-pill">On demand</div>
+          </div>
+
+          <div class="card-body">
+            <p>Gli agenti sono script che agiscono ora.</p>
+
+            <ul class="list">
+              <li class="list-item">
+                <div class="list-bullet"></div>
+                <div>
+                  <div class="list-label">Agente GitHub</div>
+                  <small>Apre repo, issue, PR.</small>
+                </div>
+              </li>
+
+              <li class="list-item">
+                <div class="list-bullet"></div>
+                <div>
+                  <div class="list-label">Agente Discord</div>
+                  <small>Porta il flusso nel canale giusto.</small>
+                </div>
+              </li>
+            </ul>
+
+            <p style="font-size:11px;margin-top:6px;">
+              Implementazione reale: <code>OPECLAW/agents/</code>
+            </p>
+          </div>
+        </div>
+
+        <!-- AUTOMI -->
+        <div class="card">
+          <div class="card-header">
+            <div class="card-title">Automi</div>
+            <div class="card-pill">Rituali</div>
+          </div>
+
+          <div class="card-body">
+            <p>Gli automi sono rituali programmati.</p>
+
+            <ul class="list">
+              <li class="list-item">
+                <div class="list-bullet"></div>
+                <div>
+                  <div class="list-label">Auto-sync</div>
+                  <small>Registra lo stato dei nodi.</small>
+                </div>
+              </li>
+
+              <li class="list-item">
+                <div class="list-bullet"></div>
+                <div>
+                  <div class="list-label">Health-check</div>
+                  <small>Controlla la salute del sistema.</small>
+                </div>
+              </li>
+            </ul>
+
+            <p style="font-size:11px;margin-top:6px;">
+              Implementazione reale: <code>OPECLAW/automi/</code>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- LATO DESTRO -->
+    <aside class="side">
+
+      <!-- STATO -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Stato Nodo</div>
+          <div class="card-pill">AOA</div>
+        </div>
+
+        <div class="card-body">
+          <ul class="list">
+            <li class="list-item">
+              <div class="list-bullet"></div>
+              <div>
+                <div class="list-label">xZDOS AOA</div>
+                <small>Layer architetturale per agenti e automi.</small>
+              </div>
+            </li>
+
+            <li class="list-item">
+              <div class="list-bullet"></div>
+              <div>
+                <div class="list-label">OPECLAW</div>
+                <small>Interfaccia terminale operativa.</small>
+              </div>
+            </li>
+
+            <li class="list-item">
+              <div class="list-bullet"></div>
+              <div>
+                <div class="list-label">xCLOUD</div>
+                <small>Nodo cloud dell’ecosistema.</small>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- LOGICA -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">Logica Operativa</div>
+          <div class="card-pill">Schema</div>
+        </div>
+
+        <div class="card-body">
+          <p>Questo nodo è la mappa leggibile del sistema.</p>
+
+          <ul class="list">
+            <li class="list-item">
+              <div class="list-bullet"></div>
+              <div>
+                <div class="list-label">Terminale</div>
+                <small>OPECLAW esegue agenti e automi.</small>
+              </div>
+            </li>
+
+            <li class="list-item">
+              <div class="list-bullet"></div>
+              <div>
+                <div class="list-label">Web</div>
+                <small>Questa pagina orchestra e visualizza.</small>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </aside>
+
   </div>
 
-  <footer>© 2026 xZDOS_AOA · Nodo biforcato · Powered by GIGA-XZDOS</footer>
+  <!-- API interne simulate -->
+  <script>
+    // API simbolica per OPECLAW
+    function openOPECLAW() {
+      window.location.href = "opeclaw://open";
+    }
+  </script>
+
 </body>
 </html>
-
-

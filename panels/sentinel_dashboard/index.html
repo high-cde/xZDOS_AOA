@@ -1,187 +1,37 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>xZDOS Terminale — Agenti Bivi</title>
+  <meta charset="UTF-8">
+  <title>SENTINEL Dashboard</title>
   <style>
-    body {
-      margin: 0;
-      background: #0a0a0f;
-      font-family: 'Courier New', monospace;
-      color: #00ffe0;
-    }
-    header {
-      background: linear-gradient(90deg, #00f0ff, #7df9ff);
-      padding: 20px;
-      color: #000;
-      text-align: center;
-      font-size: 24px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      box-shadow: 0 0 20px #00f0ff;
-    }
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .panel {
-      background: #111122;
-      border: 1px solid #333;
-      border-radius: 10px;
-      padding: 20px;
-      box-shadow: 0 0 12px #00f0ff33;
-    }
-    .panel h2 {
-      color: #7df9ff;
-      margin-top: 0;
-      font-size: 18px;
-      border-bottom: 1px solid #333;
-      padding-bottom: 6px;
-    }
-    .label { color: #aaa; }
-    .value { font-weight: bold; color: #00ffcc; }
-    .agent { margin-bottom: 14px; }
-    .agent-name { color: #00ffff; font-weight: bold; }
-    .agent-role { color: #999; }
-    .log { color: #39ff14; margin-left: 20px; }
-    .glow { text-shadow: 0 0 5px #00f0ff, 0 0 10px #00f0ff; }
-    textarea {
-      width: 100%;
-      height: 80px;
-      background: #000;
-      color: #0f0;
-      border: 1px solid #444;
-      padding: 8px;
-      font-family: monospace;
-      resize: vertical;
-    }
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-      background: #000;
-      box-shadow: 0 0 10px #00f0ff44;
-    }
-    .event-log {
-      background: #000;
-      color: #0f0;
-      font-size: 13px;
-      height: 200px;
-      overflow-y: auto;
-      padding: 10px;
-      border: 1px solid #333;
-      white-space: pre-wrap;
-    }
+    body { font-family: system-ui, sans-serif; background:#050711; color:#f5f5f5; margin:0; padding:20px; }
+    .card { background:#0b0f1f; border-radius:10px; padding:20px; margin-bottom:20px; box-shadow:0 0 20px rgba(0,0,0,0.4); }
+    h1 { margin-top:0; }
+    .status-ok { color:#4caf50; }
+    .status-warn { color:#ffc107; }
+    .status-fail { color:#f44336; }
+    .grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap:20px; }
+    pre { background:#050711; padding:10px; border-radius:6px; overflow:auto; max-height:300px; }
   </style>
 </head>
 <body>
-  <header class="glow">xZDOS_AOA — Terminale Operativo & Agenti Bivi</header>
-
-  <div class="container">
-    <!-- Stato Sentinel -->
-    <div class="panel">
-      <h2>🧠 Stato Sentinel</h2>
-      <p><span class="label">Cicli eseguiti:</span> <span class="value" id="cycles">—</span></p>
-      <p><span class="label">Ultimo stato:</span> <span class="value" id="status">—</span></p>
-      <p><span class="label">Ultima sync Miniera:</span> <span class="value" id="miner_sync">—</span></p>
-      <p><span class="label">Ultimo evento:</span> <span class="value" id="last_event">—</span></p>
+  <h1>SENTINEL Dashboard</h1>
+  <div class="grid">
+    <div class="card">
+      <h2>Stato Sistema</h2>
+      <p>Questa dashboard mostra lo stato logico di SENTINEL e dei suoi cicli.</p>
+      <p><strong>Nota:</strong> versione statica, alimentata dai log generati nel repo.</p>
     </div>
-
-    <!-- Terminale Agenti -->
-    <div class="panel">
-      <h2>🤖 Agenti Bivi</h2>
-      <div id="agents"></div>
+    <div class="card">
+      <h2>Log SENTINEL</h2>
+      <p>Apri i file in <code>logs/</code> per vedere i dettagli dei cicli.</p>
+      <pre>git clone &amp;&amp; tail -f logs/sentinel_*.log</pre>
     </div>
-
-    <!-- Eventi Live -->
-    <div class="panel">
-      <h2>📡 Event Bus — Stream</h2>
-      <div class="event-log" id="eventLog">Caricamento eventi…</div>
-    </div>
-
-    <!-- Comandi -->
-    <div class="panel">
-      <h2>⌨️ Comandi Agente</h2>
-      <p class="label">Invia un comando a un agente (es: <code>A03: attiva modulo fotonico</code>)</p>
-      <textarea id="cmdInput" placeholder="Scrivi qui il comando..."></textarea>
-      <button onclick="sendCommand()">Invia</button>
-      <pre id="cmdOutput"></pre>
-    </div>
-
-    <!-- Mappa -->
-    <div class="panel">
-      <h2>🗺️ Mappa Civiltà Biforcuta</h2>
-      <iframe src="../miniera_map.html"></iframe>
+    <div class="card">
+      <h2>Analyzer</h2>
+      <p>Esegui l'analizzatore Python in locale:</p>
+      <pre>python scripts/xzdos_sentinel_analyzer.py</pre>
     </div>
   </div>
-
-  <script>
-    const agents = [
-      { id: "A01", name: "ORION", role: "Stratega delle Rotte", log: "↳ Calcolo nuove traiettorie per la colonia orbitale…" },
-      { id: "A02", name: "VULKAN", role: "Ingegnere Minerario", log: "↳ Estrazione di silicio quantico in corso…" },
-      { id: "A03", name: "LUMINA", role: "Custode delle Energie", log: "↳ Ricalibrazione flussi fotonici completata." },
-      { id: "A04", name: "NEXUS", role: "Coordinatore Eventi", log: "↳ Sincronizzazione con Event Bus: OK" },
-      { id: "A05", name: "ECHO", role: "Archivista Temporale", log: "↳ Backup cronologici salvati in /state/" },
-      { id: "A06", name: "IRIS", role: "Visione e Pannelli", log: "↳ Rendering dashboard e mappa dinamica…" },
-      { id: "A07", name: "KAIROS", role: "Custode del Tempo", log: "↳ Ciclo Sentinel #<span id='cycle'>—</span> — Stato: <span id='status2'>—</span>" },
-      { id: "A08", name: "ZENITH", role: "Analista Anomalie", log: "↳ Nessuna anomalia critica rilevata." },
-      { id: "A09", name: "NOVA", role: "Comunicazioni Esterne", log: "↳ Collegamento con Portale MetaMask: attivo" },
-      { id: "A10", name: "SIGMA", role: "Intelligenza Predittiva", log: "↳ Previsione: prossima biforcazione in 3 cicli" }
-    ];
-
-    function renderAgents() {
-      const container = document.getElementById("agents");
-      agents.forEach(agent => {
-        const div = document.createElement("div");
-        div.className = "agent";
-        div.innerHTML = `<span class="agent-name">[${agent.id}] ${agent.name}</span> <span class="agent-role">— ${agent.role}</span>
-                         <div class="log">${agent.log}</div>`;
-        container.appendChild(div);
-      });
-    }
-
-    async function updateState() {
-      try {
-        const res = await fetch('/state/sentinel_state.json');
-        const data = await res.json();
-        document.getElementById('cycles').textContent = data.cycles ?? '—';
-        document.getElementById('status').textContent = data.last_status ?? '—';
-        document.getElementById('miner_sync').textContent = data.last_miner_sync ?? '—';
-        document.getElementById('last_event').textContent = data.last_event_ts ?? '—';
-        document.getElementById('cycle').textContent = data.cycles ?? '—';
-        document.getElementById('status2').textContent = data.last_status ?? '—';
-      } catch (e) {
-        console.error("Errore nel caricamento dello stato:", e);
-      }
-    }
-
-    async function loadEvents() {
-      try {
-        const res = await fetch('/event_bus/events.log');
-        const text = await res.text();
-        document.getElementById('eventLog').textContent = text.split('\n').slice(-20).join('\n');
-      } catch (e) {
-        document.getElementById('eventLog').textContent = "Errore nel caricamento eventi.";
-      }
-    }
-
-    function sendCommand() {
-      const cmd = document.getElementById("cmdInput").value.trim();
-      const output = document.getElementById("cmdOutput");
-      if (!cmd) return;
-      output.textContent = `🛰️ Comando ricevuto: "${cmd}"\nRisposta simulata da agente: OK, eseguo.`;
-      document.getElementById("cmdInput").value = "";
-    }
-    
-    renderAgents();
-    updateState();
-    loadEvents();
-    setInterval(updateState, 10000);
-    setInterval(loadEvents, 15000);
-  </script>
 </body>
 </html>
-
-			
