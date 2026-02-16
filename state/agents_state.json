@@ -1,0 +1,77 @@
+[
+  {
+    "id": "A01",
+    "name": "ORION",
+    "role": "Stratega delle Rotte",
+    "memory": [],
+    "status": "idle"
+  },
+  {
+    "id": "A02",
+    "name": "VULKAN",
+    "role": "Ingegnere Minerario",
+    "memory": [],
+    "status": "idle"
+  },
+  {
+    "id": "A03",
+    "name": "LUMINA",
+    "role": "Custode delle Energie",
+    "memory": [
+      {
+        "timestamp": "2026-02-13T17:07:30.848Z",
+        "command": "attiva modulo fotonico"
+      }
+    ],
+    "status": "active"
+  },
+  {
+    "id": "A04",
+    "name": "NEXUS",
+    "role": "Coordinatore Eventi",
+    "memory": [],
+    "status": "idle"
+  },
+  {
+    "id": "A05",
+    "name": "ECHO",
+    "role": "Archivista Temporale",
+    "memory": [],
+    "status": "idle"
+  },
+  {
+    "id": "A06",
+    "name": "IRIS",
+    "role": "Visione e Pannelli",
+    "memory": [],
+    "status": "idle"
+  },
+  {
+    "id": "A07",
+    "name": "KAIROS",
+    "role": "Custode del Tempo",
+    "memory": [],
+    "status": "idle"
+  },
+  {
+    "id": "A08",
+    "name": "ZENITH",
+    "role": "Analista Anomalie",
+    "memory": [],
+    "status": "idle"
+  },
+  {
+    "id": "A09",
+    "name": "NOVA",
+    "role": "Comunicazioni Esterne",
+    "memory": [],
+    "status": "idle"
+  },
+  {
+    "id": "A10",
+    "name": "SIGMA",
+    "role": "Intelligenza Predittiva",
+    "memory": [],
+    "status": "idle"
+  }
+]
